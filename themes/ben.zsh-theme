@@ -74,7 +74,7 @@ prompt_git() {
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     dirty=$(parse_git_dirty)
-    branch_data=$(git status -b --porcelain | grep '^##.*\[ahead')
+    branch_data=$(git status -b --porcelain | grep -E '^##.*\[(ahead|behind)')
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
     if [[ -n "$branch_data" ]]; then
       prompt_segment yellow black
