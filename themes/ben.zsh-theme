@@ -77,7 +77,7 @@ prompt_git() {
     branch_data=$(git status -b --porcelain 2>/dev/null | grep -E '^##.*\[(ahead|behind)')
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
     if [[ -n "$branch_data" ]]; then
-      prompt_segment 130 black
+      prompt_segment 226 black
     elif [[ -z "$dirty" || "$dirty" = "$success" ]]; then
       prompt_segment 10 black
     else
